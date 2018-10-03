@@ -1,17 +1,17 @@
-// Package goutil is a collection of small reusable Go functions 
+// Package goutil is a collection of small reusable Go functions
 package goutil
 
-import(
-	"unicode"
+import (
 	"strings"
+	"unicode"
 )
 
 // Capitalizes the first letter of a string.
 func Capitalize(str string) string {
-    for i, v := range str {
-        return string(unicode.ToUpper(v)) + str[i+1:]
-    }
-    return ""
+	for i, v := range str {
+		return string(unicode.ToUpper(v)) + str[i+1:]
+	}
+	return ""
 }
 
 // Capitalizes string excluding words such as "and", "a", "with", "or".
@@ -37,10 +37,10 @@ func CapitalizeTitle(input string, omitWords ...[]string) string {
 }
 
 func contains(s []string, e string) bool {
-    for _, a := range s {
-        if a == e {
-            return true
-        }
-    }
-    return false
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
 }
