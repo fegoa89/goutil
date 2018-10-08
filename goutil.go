@@ -36,6 +36,69 @@ func CapitalizeTitle(input string, omitWords ...[]string) string {
 	return strings.Join(title, " ")
 }
 
+// Convert string to UpperCamelCase
+func UpperCamelCase(inputStr string) (outputString string) {
+	inputStr = strings.ToUpper(string(inputStr[0])) + inputStr[1:]
+	return toCamelCase(inputStr)
+}
+
+// Convert string to lowerCamelCase
+func LowerCamelCase(inputStr string) (outputString string) {
+	inputStr = strings.ToLower(string(inputStr[0])) + inputStr[1:]
+	return toCamelCase(inputStr)
+}
+
+// Converts a string to Snake Case
+func ToSnakeCase(s string) string {
+	return toSeparatedLowerCase(s, "_")
+}
+
+// Converts a string to Snake Case
+func ToKebabCase(s string) string {
+	return toSeparatedLowerCase(s, "-")
+}
+
+// Convert a space/dash/dot/underscore separated string to CamelCase
+func toCamelCase(inputStr string) (camelCase string) {
+	capitalizeNextWord := false
+	stringDelimiters := []string{" ", "-", "_", "."}
+
+	for _, v := range inputStr {
+		if capitalizeNextWord {
+			camelCase += strings.ToUpper(string(v))
+			capitalizeNextWord = false
+		} else {
+			if contains(stringDelimiters, string(v)) {
+				capitalizeNextWord = true
+			} else {
+				camelCase += string(v)
+			}
+		}
+	}
+	return
+}
+
+// Convert string into separated lower case
+func toSeparatedLowerCase(inputString string, delimiter string) (outputString string) {
+	inputString = strings.Trim(inputString, " ")
+	stringDelimiters := []string{" ", "-", "_", "."}
+
+	for k, v := range inputString {
+		value := string(v)
+		if value == strings.ToUpper(value) && k == 0 {
+			outputString += strings.ToLower(value)
+		} else if contains(stringDelimiters, value) {
+			continue
+		} else if value == strings.ToUpper(value) {
+			outputString += delimiter
+			outputString += strings.ToLower(value)
+		} else {
+			outputString += value
+		}
+	}
+	return
+}
+
 func contains(s []string, e string) bool {
 	for _, a := range s {
 		if a == e {
