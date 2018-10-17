@@ -84,16 +84,15 @@ func toSeparatedLowerCase(inputString string, delimiter string) (outputString st
 	stringDelimiters := []string{" ", "-", "_", "."}
 
 	for k, v := range inputString {
-		value := string(v)
-		if value == strings.ToUpper(value) && k == 0 {
-			outputString += strings.ToLower(value)
-		} else if contains(stringDelimiters, value) {
+		if v == unicode.ToUpper(v) && k == 0 {
+			outputString += strings.ToLower(string(v))
+		} else if contains(stringDelimiters, string(v)) {
 			continue
-		} else if value == strings.ToUpper(value) {
+		} else if v == unicode.ToUpper(v) {
 			outputString += delimiter
-			outputString += strings.ToLower(value)
+			outputString += strings.ToLower(string(v))
 		} else {
-			outputString += value
+			outputString += string(v)
 		}
 	}
 	return

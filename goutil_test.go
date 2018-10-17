@@ -93,6 +93,7 @@ func TestToSnakeCase(t *testing.T) {
 		{"foo.AndBar", "foo_and_bar"},
 		{"Foo-And-Bar", "foo_and_bar"},
 		{"foo And Bar", "foo_and_bar"},
+		{"你好", "你_好"},
 	}
 
 	for _, c := range cases {
@@ -111,6 +112,7 @@ func TestToKebabCase(t *testing.T) {
 		{"foo.AndBar", "foo-and-bar"},
 		{"foo-And-Bar", "foo-and-bar"},
 		{"foo And Bar", "foo-and-bar"},
+		{"你好", "你-好"},
 	}
 
 	for _, c := range cases {
