@@ -165,3 +165,57 @@ func TestTruncate(t *testing.T) {
 		}
 	}
 }
+
+func TestIsEmptyOrBlank(t *testing.T) {
+	cases := []struct {
+		in   string
+		want bool
+	}{
+		{"", true},
+		{" ", true},
+		{"my string", false},
+	}
+
+	for _, c := range cases {
+		got := IsEmptyOrBlank(c.in)
+		if got != c.want {
+			t.Error("IsEmptyOrBlank(%q) == %q, want %q", c.in, got, c.want)
+		}
+	}
+}
+
+func TestIsBlank(t *testing.T) {
+	cases := []struct {
+		in   string
+		want bool
+	}{
+		{"", true},
+		{" ", true},
+		{"my string", false},
+	}
+
+	for _, c := range cases {
+		got := IsBlank(c.in)
+		if got != c.want {
+			t.Error("IsBlank(%q) == %q, want %q", c.in, got, c.want)
+		}
+	}
+}
+
+func TestIsEmpty(t *testing.T) {
+	cases := []struct {
+		in   string
+		want bool
+	}{
+		{"", true},
+		{" ", false},
+		{"my string", false},
+	}
+
+	for _, c := range cases {
+		got := IsEmpty(c.in)
+		if got != c.want {
+			t.Error("IsEmpty(%q) == %q, want %q", c.in, got, c.want)
+		}
+	}
+}

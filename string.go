@@ -79,6 +79,21 @@ func Truncate(inputStr string, length int) string {
 	return inputStr
 }
 
+// Returns true if string is empty or blank
+func IsEmptyOrBlank(inputStr string) bool {
+	return IsEmpty(inputStr) || IsBlank(inputStr)
+}
+
+// Returns true if string is blank
+func IsBlank(inputStr string) bool {
+	return len(strings.TrimSpace(inputStr)) == 0
+}
+
+// Returns true if string is empty
+func IsEmpty(inputStr string) bool {
+	return len(inputStr) == 0
+}
+
 // Convert a space/dash/dot/underscore separated string to CamelCase
 func toCamelCase(inputStr string) (camelCase string) {
 	capitalizeNextWord := false
