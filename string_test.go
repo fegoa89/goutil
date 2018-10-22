@@ -139,3 +139,29 @@ func TestHumanize(t *testing.T) {
 		}
 	}
 }
+
+func TestTruncate(t *testing.T) {
+	cases := []struct {
+		in     string
+		length int
+		want   string
+	}{
+		{
+			"En un lugar de la Mancha, de cuyo nombre no quiero acordarme",
+			27,
+			"En un lugar de la Mancha...",
+		},
+		{
+			"King Gizzard & The Lizard Wizard",
+			15,
+			"King Gizzard...",
+		},
+	}
+
+	for _, c := range cases {
+		got := Truncate(c.in, c.length)
+		if got != c.want {
+			t.Errorf("Truncate(%q) == %q, want %q", c.in, got, c.want)
+		}
+	}
+}

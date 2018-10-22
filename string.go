@@ -67,6 +67,18 @@ func Humanize(inputStr string) string {
 	return strings.ToLower(inputStr)
 }
 
+// Truncates a string up to a specified string length
+func Truncate(inputStr string, length int) string {
+	if len(inputStr) > length {
+		if length > 3 {
+			length -= 3
+		}
+		inputStr = inputStr[0:length] + "..."
+	}
+
+	return inputStr
+}
+
 // Convert a space/dash/dot/underscore separated string to CamelCase
 func toCamelCase(inputStr string) (camelCase string) {
 	capitalizeNextWord := false
