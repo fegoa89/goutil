@@ -36,7 +36,7 @@ func TestCapitalizeTitle(t *testing.T) {
 	cases = []struct {
 		in, want string
 	}{
-		{"milk and honey", "milk and hone
+		{"milk and honey", "milk and honey"},
 	}
 
 	for _, c := range cases {
