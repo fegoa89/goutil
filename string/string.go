@@ -94,6 +94,16 @@ func IsEmpty(inputStr string) bool {
 	return len(inputStr) == 0
 }
 
+// Deletes all whitespaces from a String
+func DeleteWhitespace(str string) string {
+	return strings.Map(func(r rune) rune {
+		if !unicode.IsSpace(r) {
+			return r
+		}
+		return -1
+	}, str)
+}
+
 // Convert a space/dash/dot/underscore separated string to CamelCase
 func toCamelCase(inputStr string) (camelCase string) {
 	capitalizeNextWord := false

@@ -219,3 +219,19 @@ func TestIsEmpty(t *testing.T) {
 		}
 	}
 }
+
+func TestDeleteWhitespace(t *testing.T) {
+	cases := []struct {
+		in, want string
+	}{
+		{"my string", "mystring"},
+		{" my string ", "mystring"},
+	}
+
+	for _, c := range cases {
+		got := DeleteWhitespace(c.in)
+		if got != c.want {
+			t.Error("DeleteWhitespace(%q) == %q, want %q", c.in, got, c.want)
+		}
+	}
+}
