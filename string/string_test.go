@@ -235,3 +235,74 @@ func TestDeleteWhitespace(t *testing.T) {
 		}
 	}
 }
+
+func TestCaseInsensitiveEquals(t *testing.T) {
+	cases := []struct {
+		FirstString, SecondString string
+		want                      bool
+	}{
+		{"my string", "My String", true},
+		{"my string", "My-String", false},
+	}
+
+	for _, c := range cases {
+		got := CaseInsensitiveEquals(c.FirstString, c.SecondString)
+		if got != c.want {
+			t.Error("CaseInsensitiveEquals(%s, %s) == %t, want %t", c.FirstString, c.SecondString, got, c.want)
+		}
+	}
+}
+
+func TestIsBoolean(t *testing.T) {
+	cases := []struct {
+		InputString string
+		want        bool
+	}{
+		{"true", true},
+		{"false", true},
+		{"ventilator", false},
+	}
+
+	for _, c := range cases {
+		got := IsBoolean(c.InputString)
+		if got != c.want {
+			t.Error("IsBoolean(%s) == %t, want %t", c.InputString, got, c.want)
+		}
+	}
+}
+
+func TestIsInteger(t *testing.T) {
+	cases := []struct {
+		InputString string
+		want        bool
+	}{
+		{"1", true},
+		{"4534", true},
+		{"cat", false},
+	}
+
+	for _, c := range cases {
+		got := IsInteger(c.InputString)
+		if got != c.want {
+			t.Error("IsInteger(%s) == %t, want %t", c.InputString, got, c.want)
+		}
+	}
+}
+
+func TestIsFloat(t *testing.T) {
+	cases := []struct {
+		InputString string
+		want        bool
+	}{
+		{"1.4", true},
+		{"45.34", true},
+		{"dog", false},
+	}
+
+	for _, c := range cases {
+		got := IsFloat(c.InputString)
+		if got != c.want {
+			t.Error("IsFloat(%s) == %t, want %t", c.InputString, got, c.want)
+		}
+	}
+}

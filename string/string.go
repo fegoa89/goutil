@@ -3,6 +3,7 @@ package string
 
 import (
 	"regexp"
+	"strconv"
 	"strings"
 	"unicode"
 )
@@ -102,6 +103,38 @@ func DeleteWhitespace(str string) string {
 		}
 		return -1
 	}, str)
+}
+
+// Return true if both strings are case insensitive equal
+func CaseInsensitiveEquals(firstString, secondString string) bool {
+	return strings.ToLower(firstString) == strings.ToLower(secondString)
+}
+
+// Determines whether the string is a boolean representation
+func IsBoolean(inputStr string) bool {
+	if inputStr == `true` || inputStr == `false` {
+		return true
+	}
+
+	return false
+}
+
+// Determines whether the string is a integer representation
+func IsInteger(inputStr string) bool {
+	if _, err := strconv.Atoi(inputStr); err == nil {
+		return true
+	}
+
+	return false
+}
+
+// Determines whether the string is a float representation
+func IsFloat(inputStr string) bool {
+	if _, err := strconv.ParseFloat(inputStr, 64); err == nil {
+		return true
+	}
+
+	return false
 }
 
 // Convert a space/dash/dot/underscore separated string to CamelCase
