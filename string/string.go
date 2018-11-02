@@ -137,6 +137,15 @@ func IsFloat(inputStr string) bool {
 	return false
 }
 
+// Returns index of the specified character or substring in a particular String
+func IndexOf(inputStr string, substring string) int {
+	if IsEmpty(inputStr) || IsEmpty(substring) {
+		return -1
+	}
+
+	return strings.Index(inputStr, substring)
+}
+
 // Convert a space/dash/dot/underscore separated string to CamelCase
 func toCamelCase(inputStr string) (camelCase string) {
 	capitalizeNextWord := false

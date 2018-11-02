@@ -306,3 +306,20 @@ func TestIsFloat(t *testing.T) {
 		}
 	}
 }
+
+func TestIndexOf(t *testing.T) {
+	cases := []struct {
+		InputString, Substring string
+		ExpectedIndexPosition  int
+	}{
+		{"dog", "o", 1},
+		{"airport", "po", 3},
+	}
+
+	for _, c := range cases {
+		got := IndexOf(c.InputString, c.Substring)
+		if got != c.ExpectedIndexPosition {
+			t.Error("IndexOf(%s) == %t, want %t", c.InputString, got, c.ExpectedIndexPosition)
+		}
+	}
+}
