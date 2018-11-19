@@ -55,7 +55,7 @@ func ToSnakeCase(s string) string {
 	return toSeparatedLowerCase(s, "_")
 }
 
-// Converts a string to Snake Case
+// Converts a string to Kebab Case
 func ToKebabCase(s string) string {
 	return toSeparatedLowerCase(s, "-")
 }
