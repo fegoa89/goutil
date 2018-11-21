@@ -316,7 +316,7 @@ IndexOf("dog", "o") // 1
 
 ```golang
 IndexOf("dog", "o") // 1
-IndexOf("airport", "po") // 2
+IndexOf("airport", "po") // 3
 ```
 
 </details>
