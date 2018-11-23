@@ -32,3 +32,44 @@ func RemoveItemByIndex(slice *[]interface{}, position int) int {
 	*slice = append((*slice)[:position], (*slice)[position+1:]...)
 	return len(*slice)
 }
+
+// Removes repeated values in a slice
+func SliceUnique(slice *[]interface{}) (uniqueslice []interface{}) {
+	for _, v := range *slice {
+		if !isInterfaceInSlice(v, uniqueslice) {
+			uniqueslice = append(uniqueslice, v)
+		}
+	}
+	*slice = uniqueslice
+	return
+}
+
+// Returns a slice containing all the entries from slice1 that are not present in slice2.
+func SliceDiff(slice1 *[]interface{}, slice2 *[]interface{}) (diffSlice []interface{}) {
+	for _, v := range *slice1 {
+		if !isInterfaceInSlice(v, *slice2) {
+			diffSlice = append(diffSlice, v)
+		}
+	}
+	return
+}
+
+// Returns a slice containing all the entries from slice1 that are present in slice2.
+func SliceIntersect(slice1 *[]interface{}, slice2 *[]interface{}) (intersectSlice []interface{}) {
+	for _, v := range *slice1 {
+		if isInterfaceInSlice(v, *slice2) {
+			intersectSlice = append(intersectSlice, v)
+		}
+	}
+	return
+}
+
+// Checks if given interface exists in interface slice
+func isInterfaceInSlice(inputInterface interface{}, uniqSlice []interface{}) bool {
+	for _, element := range uniqSlice {
+		if element == inputInterface {
+			return true
+		}
+	}
+	return false
+}
