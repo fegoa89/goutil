@@ -13,8 +13,11 @@ func SlicePop(slice *[]interface{}) interface{} {
 		return nil
 	}
 
+	interfaceToRemove := (*slice)[len(*slice)-1]
+
 	*slice = (*slice)[:len(*slice)-1]
-	return (*slice)[len(*slice)-1]
+
+	return interfaceToRemove
 }
 
 // Removes the first element from an slice and returns that removed element
@@ -23,8 +26,9 @@ func SliceShift(slice *[]interface{}) interface{} {
 		return nil
 	}
 
+	interfaceToRemove := (*slice)[0]
 	*slice = (*slice)[1:]
-	return (*slice)[0]
+	return interfaceToRemove
 }
 
 // Remove an item by index position

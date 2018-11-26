@@ -6,7 +6,7 @@ import (
 )
 
 func TestSlicePush(t *testing.T) {
-	initialSlice := make([]interface{}, 0)
+	initialSlice := []interface{}{}
 	expectedSlice := []interface{}{"fox"}
 
 	SlicePush(&initialSlice, "fox")

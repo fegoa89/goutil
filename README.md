@@ -34,6 +34,20 @@ go get github.com/fegoa89/goutils
 * [`IndexOf`](#IndexOf)
 </details>
 
+### Slice
+
+<details>
+<summary>View contents</summary>
+
+* [`SlicePush`](#SlicePush)
+* [`SlicePop`](#SlicePop)
+* [`SliceShift`](#SliceShift)
+* [`RemoveItemByIndex`](#RemoveItemByIndex)
+* [`SliceUnique`](#SliceUnique)
+* [`SliceDiff`](#SliceDiff)
+* [`SliceIntersect`](#SliceIntersect)
+</details>
+
 ---
 
 ## String
@@ -320,5 +334,72 @@ IndexOf("airport", "po") // 3
 ```
 
 </details>
+
+## Slice
+
+Import
+```go
+import "github.com/fegoa89/goutils/slice"
+```
+
+### SlicePush
+
+Adds an elements to the end of a slice and returns the new length of the slice.
+```golang
+mySlice := []interface{}{}
+SlicePush(&mySlice, "hello") // 1
+```
+
+### SlicePop
+
+Removes the last element from an slice and returns that removed element
+```golang
+mySlice := []interface{}{"red", "fox"}
+SlicePop(&mySlice) // "fox"
+```
+
+### SliceShift
+
+Removes the first element from an slice and returns that removed element.
+```golang
+mySlice := []interface{}{"red", "fox"}
+SliceShift(&mySlice) // "red"
+```
+
+### RemoveItemByIndex
+
+Removes an item by index position and returns the new length of the slice.
+```golang
+mySlice := []interface{}{"red", "fox"}
+RemoveItemByIndex(&mySlice, 0) // "1"
+```
+
+### SliceUnique
+
+Assigns to the slice a duplicate-free version of itself.
+```golang
+mySlice := []interface{}{"red", "red", "fox"}
+SliceUnique(&mySlice) // "1"
+```
+
+### SliceDiff
+
+Returns a slice containing all the entries from slice1 that are not present in slice2.
+```golang
+firstSlice := []interface{}{"red", "dog", "fox"}
+secondSlice := []interface{}{"red", "fox"}
+
+SliceDiff(&firstSlice, &secondSlice) // []interface{}{"dog"}
+```
+
+### SliceIntersect
+
+Returns a slice containing all the entries from slice1 that are present in slice2.
+```golang
+firstSlice := []interface{}{"red", "dog", "fox"}
+secondSlice := []interface{}{"dog"}
+
+SliceIntersect(&firstSlice, &secondSlice) // []interface{}{"dog"}
+```
 
 <br>[⬆ Back to top](#table-of-contents)
