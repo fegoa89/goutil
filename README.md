@@ -1,5 +1,5 @@
 # goutil
-Collection of small reusable Go functions - WIP
+Collection of small reusable Go functions
 
 ## Install
 
@@ -402,4 +402,90 @@ secondSlice := []interface{}{"dog"}
 SliceIntersect(&firstSlice, &secondSlice) // []interface{}{"dog"}
 ```
 
+## Timespan
+
+Import
+```go
+import "github.com/fegoa89/goutils/timespan"
+```
+
+### Start
+
+Returns the start time.
+```golang
+startTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 00 00")
+endTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 16 00")
+timeSpanStruct := TimeSpanStruct(startTimeObject, endTimeObject)
+timeSpanStruct.Start() // 2015-11-11 00:00:00 +0000 UTC
+```
+
+### End
+
+Returns the end time.
+```golang
+startTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 00 00")
+endTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 16 00")
+timeSpanStruct := TimeSpanStruct(startTimeObject, endTimeObject)
+timeSpanStruct.End() // 2015-11-11 16:00:00 +0000 UTC
+```
+
+### ValidDateRange
+
+Checks if the start date is older than end date.
+```golang
+startTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 00 00")
+endTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 16 00")
+timeSpanStruct := TimeSpanStruct(startTimeObject, endTimeObject)
+timeSpanStruct.ValidDateRange() // true
+```
+
+### DaysBetween
+
+Returns the quantity of days between two time objects.
+```golang
+startTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 00 00")
+endTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 14 16 00")
+timeSpanStruct := TimeSpanStruct(startTimeObject, endTimeObject)
+timeSpanStruct.DaysBetween() // 33
+```
+
+### HoursBetween
+
+Returns the quantity of hours between two time objects.
+```golang
+startTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 00 00")
+endTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 16 00")
+timeSpanStruct := TimeSpanStruct(startTimeObject, endTimeObject)
+timeSpanStruct.HoursBetween() // 16
+```
+
+### MinutesBetween
+
+Returns the quantity of minutes between two time objects.
+```golang
+startTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 00 00")
+endTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 16 00")
+timeSpanStruct := TimeSpanStruct(startTimeObject, endTimeObject)
+timeSpanStruct.MinutesBetween() // 16
+```
+
+### SecondsBetween
+
+Returns the quantity of seconds between two time objects.
+```golang
+startTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 00 00")
+endTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 16 00")
+timeSpanStruct := TimeSpanStruct(startTimeObject, endTimeObject)
+timeSpanStruct.SecondsBetween() // 57600
+```
+
+### MonthsBetween
+
+Returns the quantity of months between two time objects.
+```golang
+startTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 11 11 00 00")
+endTimeObject, _ := time.Parse("2006 01 02 15 04", "2015 12 11 16 00")
+timeSpanStruct := TimeSpanStruct(startTimeObject, endTimeObject)
+timeSpanStruct.MonthsBetween() // 1
+```
 <br>[⬆ Back to top](#table-of-contents)
