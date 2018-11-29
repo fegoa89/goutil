@@ -48,6 +48,21 @@ go get github.com/fegoa89/goutils
 * [`SliceIntersect`](#SliceIntersect)
 </details>
 
+### Timespan
+
+<details>
+<summary>View contents</summary>
+
+* [`Start`](#Start)
+* [`End`](#End)
+* [`ValidDateRange`](#ValidDateRange)
+* [`DaysBetween`](#DaysBetween)
+* [`HoursBetween`](#HoursBetween)
+* [`MinutesBetween`](#MinutesBetween)
+* [`SecondsBetween`](#SecondsBetween)
+* [`MonthsBetween`](#MonthsBetween)
+</details>
+
 ---
 
 ## String
