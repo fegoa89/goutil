@@ -1,4 +1,4 @@
-[![Build Status](https://semaphoreci.com/api/v1/fegoa89/goutil/branches/master/badge.svg)](https://semaphoreci.com/fegoa89/goutil)
+[![Build Status](https://semaphoreci.com/api/v1/fegoa89/goutil/branches/master/badge.svg)](https://semaphoreci.com/fegoa89/goutil)[![GoDoc](https://godoc.org/github.com/fegoa89/goutil?status.svg)](https://godoc.org/github.com/fegoa89/goutil)
 # goutil
 Collection of small reusable Go functions
 
