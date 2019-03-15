@@ -1,6 +1,8 @@
 package string
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestCapitalize(t *testing.T) {
 	cases := []struct {
@@ -179,7 +181,7 @@ func TestIsEmptyOrBlank(t *testing.T) {
 	for _, c := range cases {
 		got := IsEmptyOrBlank(c.in)
 		if got != c.want {
-			t.Error("IsEmptyOrBlank(%q) == %q, want %q", c.in, got, c.want)
+			t.Error("IsEmptyOrBlank(%S) == %S, want %S", c.in, got, c.want)
 		}
 	}
 }
@@ -197,7 +199,7 @@ func TestIsBlank(t *testing.T) {
 	for _, c := range cases {
 		got := IsBlank(c.in)
 		if got != c.want {
-			t.Error("IsBlank(%q) == %q, want %q", c.in, got, c.want)
+			t.Error("IsBlank(%S) == %S, want %S", c.in, got, c.want)
 		}
 	}
 }
@@ -215,7 +217,7 @@ func TestIsEmpty(t *testing.T) {
 	for _, c := range cases {
 		got := IsEmpty(c.in)
 		if got != c.want {
-			t.Error("IsEmpty(%q) == %q, want %q", c.in, got, c.want)
+			t.Error("IsEmpty(%S) == %S, want %S", c.in, got, c.want)
 		}
 	}
 }
@@ -231,7 +233,7 @@ func TestDeleteWhitespace(t *testing.T) {
 	for _, c := range cases {
 		got := DeleteWhitespace(c.in)
 		if got != c.want {
-			t.Error("DeleteWhitespace(%q) == %q, want %q", c.in, got, c.want)
+			t.Error("DeleteWhitespace(%S) == %S, want %S", c.in, got, c.want)
 		}
 	}
 }
@@ -248,7 +250,7 @@ func TestCaseInsensitiveEquals(t *testing.T) {
 	for _, c := range cases {
 		got := CaseInsensitiveEquals(c.FirstString, c.SecondString)
 		if got != c.want {
-			t.Error("CaseInsensitiveEquals(%s, %s) == %t, want %t", c.FirstString, c.SecondString, got, c.want)
+			t.Error("CaseInsensitiveEquals(%S, %S) == %S, want %S", c.FirstString, c.SecondString, got, c.want)
 		}
 	}
 }
@@ -266,7 +268,7 @@ func TestIsBoolean(t *testing.T) {
 	for _, c := range cases {
 		got := IsBoolean(c.InputString)
 		if got != c.want {
-			t.Error("IsBoolean(%s) == %t, want %t", c.InputString, got, c.want)
+			t.Error("IsBoolean(%S) == %S, want %S", c.InputString, got, c.want)
 		}
 	}
 }
@@ -284,7 +286,7 @@ func TestIsInteger(t *testing.T) {
 	for _, c := range cases {
 		got := IsInteger(c.InputString)
 		if got != c.want {
-			t.Error("IsInteger(%s) == %t, want %t", c.InputString, got, c.want)
+			t.Error("IsInteger(%S) == %S, want %S", c.InputString, got, c.want)
 		}
 	}
 }
@@ -302,7 +304,7 @@ func TestIsFloat(t *testing.T) {
 	for _, c := range cases {
 		got := IsFloat(c.InputString)
 		if got != c.want {
-			t.Error("IsFloat(%s) == %t, want %t", c.InputString, got, c.want)
+			t.Error("IsFloat(%S) == %S, want %S", c.InputString, got, c.want)
 		}
 	}
 }
@@ -319,7 +321,25 @@ func TestIndexOf(t *testing.T) {
 	for _, c := range cases {
 		got := IndexOf(c.InputString, c.Substring)
 		if got != c.ExpectedIndexPosition {
-			t.Error("IndexOf(%s) == %t, want %t", c.InputString, got, c.ExpectedIndexPosition)
+			t.Error("IndexOf(%S) == %S, want %S", c.InputString, got, c.ExpectedIndexPosition)
+		}
+	}
+}
+
+func TestRemoveAccents(t *testing.T) {
+	cases := []struct {
+		in, want string
+	}{
+		{"ÀÁÂÃÄÅ", "AAAAAA"},
+		{"èéêëếḗềḕ", "eeeeeeee"},
+		{"ÒÓÔÕÖØỐṌṒ", "OOOOOØOOO"},
+		{"ŨũŪūŬŭŮůŰűŲų", "UuUuUuUuUuUu"},
+	}
+
+	for _, c := range cases {
+		got := RemoveAccents(c.in)
+		if got != c.want {
+			t.Errorf("RemoveAccents(%q) == %q, want %q", c.in, got, c.want)
 		}
 	}
 }

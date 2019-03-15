@@ -23,7 +23,7 @@ func TestSlicePop(t *testing.T) {
 	SlicePop(&initialSlice)
 
 	if reflect.DeepEqual(initialSlice, expectedSlice) != true {
-		t.Error("SlicePop() expected %v, got %v", expectedSlice, initialSlice)
+		t.Error("SlicePop() expected %q, got %q", expectedSlice, initialSlice)
 	}
 }
 

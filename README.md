@@ -32,6 +32,7 @@ go get github.com/fegoa89/goutils
 * [`IsInteger`](#IsInteger)
 * [`IsFloat`](#IsFloat)
 * [`IndexOf`](#IndexOf)
+* [`RemoveAccents`](#RemoveAccents)
 </details>
 
 ### Slice
@@ -346,6 +347,22 @@ IndexOf("dog", "o") // 1
 ```golang
 IndexOf("dog", "o") // 1
 IndexOf("airport", "po") // 3
+```
+
+</details>
+
+### RemoveAccents
+Removes the accents from a string, converting them to their non-accented corresponding characters.
+```golang
+RemoveAccents("ÀÁÂÃÄÅ") // AAAAAA
+```
+
+<details>
+<summary>Examples</summary>
+
+```golang
+RemoveAccents("ÀÁÂÃÄÅ") // AAAAAA
+RemoveAccents("ÒÓÔÕÖØỐṌṒ") // OOOOOØOOO
 ```
 
 </details>

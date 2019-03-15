@@ -6,6 +6,9 @@ import (
 	"strconv"
 	"strings"
 	"unicode"
+
+	"golang.org/x/text/transform"
+	"golang.org/x/text/unicode/norm"
 )
 
 // Capitalizes the first letter of a string.
@@ -144,6 +147,24 @@ func IndexOf(inputStr string, substring string) int {
 	}
 
 	return strings.Index(inputStr, substring)
+}
+
+// Removes the accents from a string, converting them to their non-accented corresponding characters.
+func RemoveAccents(s string) string {
+	byteArray := make([]byte, len(s))
+
+	t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
+	dst, _, e := t.Transform(byteArray, []byte(s), true)
+	if e != nil {
+		panic(e)
+	}
+
+	return string(byteArray[:dst])
+}
+
+// isMn compares if Unicode characters are in category Mn (Mark, nonspacing)
+func isMn(r rune) bool {
+	return unicode.Is(unicode.Mn, r)
 }
 
 // Convert a space/dash/dot/underscore separated string to CamelCase
