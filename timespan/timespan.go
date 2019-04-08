@@ -34,26 +34,26 @@ func (t TimeSpan) ValidDateRange() bool {
 }
 
 // Returns the quantity of days between two time objects
-func (t TimeSpan) DaysBetween() int {
-	return int(t.end.Sub(t.start).Hours() / 24)
+func (t TimeSpan) DaysBetween() int64 {
+	return int64(t.end.Sub(t.start).Hours() / 24)
 }
 
 // Returns the quantity of hours between two time objects
-func (t TimeSpan) HoursBetween() float64 {
-	return t.end.Sub(t.start).Hours()
+func (t TimeSpan) HoursBetween() int64 {
+	return int64(t.end.Sub(t.start).Hours())
 }
 
 // Returns the quantity of minutes between two time objects
-func (t TimeSpan) MinutesBetween() float64 {
-	return t.end.Sub(t.start).Minutes()
+func (t TimeSpan) MinutesBetween() int64 {
+	return int64(t.end.Sub(t.start).Minutes())
 }
 
 // Returns the quantity of seconds between two time objects
-func (t TimeSpan) SecondsBetween() float64 {
-	return t.end.Sub(t.start).Seconds()
+func (t TimeSpan) SecondsBetween() int64 {
+	return int64(t.end.Sub(t.start).Seconds())
 }
 
 // Returns the quantity of months between two time objects
-func (t TimeSpan) MonthsBetween() int {
-	return int(t.DaysBetween() / 30)
+func (t TimeSpan) MonthsBetween() int64 {
+	return int64(t.DaysBetween() / 30)
 }

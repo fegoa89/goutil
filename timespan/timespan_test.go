@@ -48,7 +48,7 @@ func TestValidDateRange(t *testing.T) {
 func TestDaysBetween(t *testing.T) {
 	cases := []struct {
 		start, end string
-		days       int
+		days       int64
 	}{
 		{"2018 01 11 00 00", "2018 10 11 00 00", 273},
 		{"2018 01 11 00 00", "2018 01 12 00 00", 1},
@@ -66,7 +66,7 @@ func TestDaysBetween(t *testing.T) {
 func TestHoursBetween(t *testing.T) {
 	cases := []struct {
 		start, end string
-		hours      float64
+		hours      int64
 	}{
 		{"2018 10 11 00 00", "2018 10 11 03 00", 3},
 		{"2018 10 11 00 00", "2018 10 12 00 00", 24},
@@ -84,7 +84,7 @@ func TestHoursBetween(t *testing.T) {
 func TestSecondsBetween(t *testing.T) {
 	cases := []struct {
 		start, end string
-		seconds    float64
+		seconds    int64
 	}{
 		{"2018 10 11 00 00", "2018 10 11 00 03", 180},
 	}
@@ -101,7 +101,7 @@ func TestSecondsBetween(t *testing.T) {
 func TestMonthsBetween(t *testing.T) {
 	cases := []struct {
 		start, end string
-		seconds    int
+		seconds    int64
 	}{
 		{"2018 10 01 00 00", "2018 11 01 00 00", 1},
 	}
@@ -118,7 +118,7 @@ func TestMonthsBetween(t *testing.T) {
 func TestMinutesBetween(t *testing.T) {
 	cases := []struct {
 		start, end string
-		minutes    float64
+		minutes    int64
 	}{
 		{"2018 10 01 00 00", "2018 10 01 00 01", 1},
 	}
