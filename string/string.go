@@ -2,6 +2,8 @@
 package string
 
 import (
+	"crypto/md5"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -160,6 +162,24 @@ func RemoveAccents(s string) string {
 	}
 
 	return string(byteArray[:dst])
+}
+
+// converts a string to an MD5 hash
+func GetMD5Hash(text string) string {
+	return fmt.Sprintf("%x", md5.Sum([]byte(text)))
+}
+
+// Transforms a list of words into a word series, returning a string containing all words separated by commas
+// and the conjunction
+func UnifyWordSeries(words []string, conjunction string) string {
+	switch len(words) {
+	case 0:
+		return ""
+	case 1:
+		return words[0]
+	default:
+		return fmt.Sprintf("%s %s %s", strings.Join(words[:len(words)-1], ", "), conjunction, words[len(words)-1])
+	}
 }
 
 // isMn compares if Unicode characters are in category Mn (Mark, nonspacing)

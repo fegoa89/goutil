@@ -34,6 +34,8 @@ go get github.com/fegoa89/goutils
 * [`IsFloat`](#IsFloat)
 * [`IndexOf`](#IndexOf)
 * [`RemoveAccents`](#RemoveAccents)
+* [`GetMD5Hash`](#GetMD5Hash)
+* [`UnifyWordSeries`](#UnifyWordSeries)
 </details>
 
 ### Slice
@@ -367,6 +369,30 @@ RemoveAccents("ÒÓÔÕÖØỐṌṒ") // OOOOOØOOO
 ```
 
 </details>
+
+### GetMD5Hash
+converts a string to an MD5 hash
+```golang
+GetMD5Hash("hola") // 4d186321c1a7f0f354b297e8914ab240
+```
+
+### UnifyWordSeries
+Transforms a list of words into a word series, returning a string containing all words separated by commas and the conjunction
+```golang
+UnifyWordSeries([]string{"dogs", "cats", "pikachus"}, "and") // dogs, cats and pikachus
+```
+
+<details>
+<summary>Examples</summary>
+
+```golang
+UnifyWordSeries([]string{"dogs"}, "and") // dogs
+UnifyWordSeries([]string{"dogs", "cats"}, "or") // dogs or cats
+UnifyWordSeries([]string{"dogs", "cats"}, "and") // dogs and cats
+```
+
+</details>
+
 
 ## Slice
 

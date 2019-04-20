@@ -343,3 +343,41 @@ func TestRemoveAccents(t *testing.T) {
 		}
 	}
 }
+
+func TestGetMD5Hash(t *testing.T) {
+	cases := []struct {
+		in, want string
+	}{
+		{"hola", "4d186321c1a7f0f354b297e8914ab240"},
+		{"hello", "5d41402abc4b2a76b9719d911017c592"},
+		{"hallo", "598d4c200461b81522a3328565c25f7c"},
+	}
+
+	for _, c := range cases {
+		got := GetMD5Hash(c.in)
+		if got != c.want {
+			t.Errorf("GetMD5Hash(%s) == %s, want %s", c.in, got, c.want)
+		}
+	}
+}
+
+func TestUnifyWordSeries(t *testing.T) {
+	cases := []struct {
+		in          []string
+		conjunction string
+		want        string
+	}{
+		{[]string{}, "and", ""},
+		{[]string{"dogs"}, "and", "dogs"},
+		{[]string{"dogs", "pikachus"}, "and", "dogs and pikachus"},
+		{[]string{"dogs", "cats", "pikachus"}, "and", "dogs, cats and pikachus"},
+		{[]string{"dogs", "cats", "pikachus"}, "or", "dogs, cats or pikachus"},
+	}
+
+	for _, c := range cases {
+		got := UnifyWordSeries(c.in, c.conjunction)
+		if got != c.want {
+			t.Errorf("UnifyWordSeries(%s) == %s, want %s", c.in, got, c.want)
+		}
+	}
+}
