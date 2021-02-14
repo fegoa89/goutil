@@ -40,7 +40,7 @@ func TestValidDateRange(t *testing.T) {
 		got := TimeSpanStruct(startTimeObject(c.start), endTimeObject(c.end)).ValidDateRange()
 
 		if got != c.expectedResponse {
-			t.Errorf("ValidDateRange() returns %q, want %q", got, c.expectedResponse)
+			t.Errorf("ValidDateRange() returns %v, want %v", got, c.expectedResponse)
 		}
 	}
 }

@@ -23,7 +23,7 @@ func TestSlicePop(t *testing.T) {
 	SlicePop(&initialSlice)
 
 	if reflect.DeepEqual(initialSlice, expectedSlice) != true {
-		t.Error("SlicePop() expected %q, got %q", expectedSlice, initialSlice)
+		t.Errorf("SlicePop() expected %v, got %v", expectedSlice, initialSlice)
 	}
 }
 
@@ -34,7 +34,7 @@ func TestSliceShift(t *testing.T) {
 	SliceShift(&initialSlice)
 
 	if reflect.DeepEqual(initialSlice, expectedSlice) != true {
-		t.Error("SliceShift() expected %v, got %v", expectedSlice, initialSlice)
+		t.Errorf("SliceShift() expected %v, got %v", expectedSlice, initialSlice)
 	}
 }
 
@@ -45,7 +45,7 @@ func TestRemoveItemByIndex(t *testing.T) {
 	RemoveItemByIndex(&initialSlice, 0)
 
 	if reflect.DeepEqual(initialSlice, expectedSlice) != true {
-		t.Error("RemoveItemByIndex() expected %v, got %v", expectedSlice, initialSlice)
+		t.Errorf("RemoveItemByIndex() expected %v, got %v", expectedSlice, initialSlice)
 	}
 }
 
@@ -56,7 +56,7 @@ func TestSliceUnique(t *testing.T) {
 	SliceUnique(&initialSlice)
 
 	if reflect.DeepEqual(initialSlice, expectedSlice) != true {
-		t.Error("SliceUnique() expected %v, got %v", expectedSlice, initialSlice)
+		t.Errorf("SliceUnique() expected %v, got %v", expectedSlice, initialSlice)
 	}
 }
 
@@ -68,7 +68,7 @@ func TestSliceDiff(t *testing.T) {
 	diffSlice := SliceDiff(&firstSlice, &secondSlice)
 
 	if reflect.DeepEqual(diffSlice, expectedSlice) != true {
-		t.Error("SliceDiff() expected %v, got %v", expectedSlice, diffSlice)
+		t.Errorf("SliceDiff() expected %v, got %v", expectedSlice, diffSlice)
 	}
 }
 
@@ -80,6 +80,6 @@ func TestSliceIntersect(t *testing.T) {
 	diffSlice := SliceIntersect(&firstSlice, &secondSlice)
 
 	if reflect.DeepEqual(diffSlice, expectedSlice) != true {
-		t.Error("SliceIntersect() expected %v, got %v", expectedSlice, diffSlice)
+		t.Errorf("SliceIntersect() expected %v, got %v", expectedSlice, diffSlice)
 	}
 }
